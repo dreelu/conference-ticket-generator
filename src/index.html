@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="output.css">
+  
+  <title>Frontend Mentor | Conference ticket generator</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+  </style>
+</head>
+<body class="min-h-dvh flex justify-center items-center flex-col bg-[url(../main/assets/images/background-desktop.png)] bg-cover bg-no-repeat">
+
+  <!-- Form starts -->
+
+  <main id="main1" class="flex justify-center items-center flex-col w-3/5">
+    <h1 class="text-neutral0 font-extrabold text-5xl text-center">Your Journey to Coding Conf 2025 Starts Here!</h1>
+    <p class="text-neutral0 font-normal">Secure your spot at next year's biggest coding conference.</p>
+    
+    <div class="w-2/5 flex flex-col justify-center">
+
+      <p class="text-neutral0">Upload Avatar</p>
+      <input type="file" name="Avatar" accept="image/jpeg, image/png" size="500kb" placeholder="Drag and drop or click to upload" class="border-2 border-neutral500">
+        <p class="text-neutral0">Drag and drop or click to upload</p>
+      <p class="text-neutral0">Upload your photo (JPG or PNG, max size: 500KB).</p>
+
+      <p class="text-neutral0">Full Name</p>
+      <input type="text" class="text-neutral300 border-2 rounded-lg border-neutral500 bg-neutral500trans" id="NameInput">
+
+      <p class="text-neutral0">Email Address</p>
+      <input type="text" name="email" placeholder="example@email.com" class="text-neutral300 border-2 rounded-lg border-neutral500 bg-neutral500trans" id="EmailInput">
+
+      <p class="text-neutral0 placeholder:text-neutral700">GitHub Username</p>
+      <input type="text" placeholder="@yourusername" class="text-neutral300 border-2 rounded-lg border-neutral500 bg-neutral500trans" id="GithubInput">
+
+      <input type="button" value="Generate My Ticket" class="bg-orange700 rounded font-bold" onclick="CreateTicket()">
+    </div>
+  </main>
+
+  <!-- Form ends -->
+   <div class="bg-[./main/assets/images/pattern-squiggly-line-bottom-desktop.svg] w-[825px] h-[400px] fixed"></div>
+   <!-- fazer com que o coiso la apareça no fundo sei la oq n sei oqla -->
+   <div></div>
+  <!-- Generated tickets starts -->
+
+  <main id="main2" class="hidden">
+    <h1 class="text-neutral0">Congrats, <span class="inline bg-tgrad bg-clip-text" id="NameOutput"></span>! Your ticket is ready.</h1>
+    <p class="text-neutral0">We've emailed your ticket to <span class="text-orange500" id="EmailOutput"></span> and will send updates in the run up to the event.</p>
+    <!-- Falta colocar o coiso do ticket aq sei la preguiça -->
+    Coding Conf
+    Jan 31, 2025 / Austin, TX
+  </main>
+
+  <!-- Generated tickets ends -->
+  
+  <script src="script.js"></script>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </footer>
+</body>
+</html>

@@ -1,26 +1,47 @@
-function CreateTicket() {
-    const main1 = document.querySelector("main#main1")
-    const main2 = document.querySelector("main#main2")
+let fileInput = document.querySelector("input#inputFile")
+let imgURL = null
 
-    let NameInput = document.querySelector("input#NameInput")
-    let EmailInput = document.querySelector("input#EmailInput")
-    let GithubInput = document.querySelector("input#GithubInput")
+fileInput.addEventListener("change", function(event) {
+    const file = event.target.files[0]
 
-    let NameOutput = document.querySelector("span#NameOutput")
-    let EmailOutput = document.querySelector("span#EmailOutput")
+     if (!file) return
 
-    if (NameInput.value.trim() === '' ||
-        EmailInput.value.trim() === '' ||
-        GithubInput.value.trim() === ''
-    ){
-        window.alert("Hello world!");
-    } else {
-        main1.style.display = "none"
-        main2.style.display = "block"
-    }
-    //versão teste do condicional
+    imgURL = URL.createObjectURL(file)
+})
 
-    NameOutput.innerHTML = `${NameInput.value}`
-    EmailOutput.innerHTML = `${EmailInput.value}`
+function inputFileTrigger() {
+    fileInput.click()
+}
+
+function generateTicket() {
+    let page1 = document.querySelector("section#page1")
+    let page2 = document.querySelector("section#page2")
     
+    let username = document.querySelector("input#username")
+    let useremail = document.querySelector("input#useremail")
+    let usergithub = document.querySelector("input#usergithub")
+
+    let nameOutput = document.querySelector("span.nameOutput")
+    let emailOutput = document.querySelector("span#emailOutput")
+    let githubOutput = document.querySelector("cite#githubOutput")
+    let imageOutput = document.querySelector("img#imageOutput")
+
+    let codeOutput = document.querySelector("strong#codeOutput")
+    let code = ''
+
+    for (let i = 0; i < 6; i++) {
+        let numeral = '0123456789'
+        const index = Math.floor(Math.random() * numeral.length)
+        code += numeral[index]
+    }
+
+    nameOutput.innerHTML = username.value
+    emailOutput.innerHTML = useremail.value
+    githubOutput.innerHTML = usergithub.value
+    imageOutput.src = imgURL
+    codeOutput.innerHTML = `#${code}`
+    //Fazer condicionais para que o código não funcione caso o email não esteja nos padrões requisitados.
+
+    page1.classList.add('hidden')
+    page2.classList.remove("hidden")
 }

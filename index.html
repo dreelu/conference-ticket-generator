@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="src/output.css">
+  
+  <title>Frontend Mentor | Conference ticket generator</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    @font-face {
+      font-family: 'Inconsolata';
+      src: url(assets/fonts/Inconsolata-VariableFont_wdth\,wght.ttf) format('truetype');
+    }
+    * {font-family: 'Inconsolata';}
+  </style>
+</head>
+<body class="bg-[url('/assets/images/background-mobile.png')] bg-cover bg-center flex flex-col items-center">
+  
+  <header><img src="assets/images/logo-full.svg" alt="full logo" class="mt-5"></header>
+
+  <!-- Form starts -->
+
+  <main class="flex justify-center items-center flex-col p-3">
+    <section id="page1" class="">
+      <div class="flex justify-center items-center flex-col">
+        <h1 class="text-Neutral-0 font-extrabold text-2xl text-center mb-5 mt-7">Your Journey to Coding Conf 2025 Starts Here!</h1>
+        <p class="text-Neutral-300 text-center mb-7">Secure your spot at next year's biggest coding conference.</p>
+      </div>
+
+      <h2 class="text-Neutral-0 text-lg">Upload Avatar</h2>
+      <div class="bg-Neutral-0-transparent backdrop:blur-2xl border w-full h-28 rounded-2xl flex flex-col items-center justify-evenly mb-1.5 cursor-pointer" onclick="inputFileTrigger()">
+        <div class="bg-[url('/assets/images/icon-upload.svg')] bg-center bg-no-repeat bg-Neutral-700 size-12 rounded-lg"></div>
+        <p class="text-Neutral-300">Drag and drop or click to upload</p>
+      </div>
+      <small class="text-sm text-Neutral-300 font-light mb-3">Upload your photo (JPG or PNG, max size: 500KB).</small>
+
+      <h2 class="text-Neutral-0 text-lg mb-1.5">Full Name</h2>
+      <input class="w-full p-2 rounded-lg bg-Neutral-0-transparent mb-5 backdrop:blur-2xl text-Neutral-300 font-normal border-Neutral-500 border" id="username" type="text">
+
+      <h2 class="text-Neutral-0 text-lg mb-1.5">Email Address</h2>
+      <input class="w-full p-2 rounded-lg bg-Neutral-0-transparent mb-5 backdrop:blur-2xl text-Neutral-300 font-normal border-Neutral-500 border" id="useremail" type="email" placeholder="example@email.com">
+
+      <h2 class="text-Neutral-0 text-lg mb-1.5">GitHub Username</h2>
+      <input class="w-full p-2 rounded-lg bg-Neutral-0-transparent mb-5 backdrop:blur-2xl text-Neutral-300 font-normal border-Neutral-500 border" id="usergithub" type="text" placeholder="@yourusername">
+
+      <button class="bg-Orange-700 rounded-lg w-full h-fit p-3 text-Neutral-900 text-lg font-bold" onclick="generateTicket()">Generate My Ticket</button>
+    </section>
+    <!-- Form ends -->
+
+    <input type="file" name="fileInput" accept=".png,.jpg" size="500000" class="hidden" id="inputFile">
+
+    <!-- Generated tickets starts -->
+    <section id="page2" class="flex flex-col justify-center items-center hidden"> 
+      <h1 class="text-3xl font-extrabold text-center text-Neutral-0 mt-5">Congrats, <span class="nameOutput bg-[linear-gradient(to_right,_hsl(7,_86%,_67%),_hsl(0,_0%,_100%))] bg-clip-text text-transparent">NAME TEST</span>! Your ticket is ready.</h1>
+      <p class="text-neutral-300 text-lg text-center leading-5 font-normal mt-5 mb-16">We've emailed your ticket to <span id="emailOutput" class="text-Orange-500"></span> and will send updates in the run up to the event.</p>
+
+      <div class="bg-[url('/assets/images/pattern-ticket.svg')] w-full h-40 bg-center bg-contain bg-no-repeat flex justify-between p-5">
+        <div class="flex flex-col justify-between">
+          <div class="flex gap-2.5">
+            <img src="assets/images/logo-mark.svg" class="size-8" alt="logo mark">
+            <div class="flex flex-col">
+              <p class="text-xl text-Neutral-300 font-bold">Coding Conf</p>
+              <div class="text-neutral-300 text-sm font-light">
+                <time class="inline-block">Jan 31, 2025</time> / <address class="inline-block">Austin, TX</address>
+              </div>
+            </div>
+          </div>
+          <div class="flex gap-2.5">
+            <img src="" id="imageOutput" class="size-12 rounded-lg" alt="user profile picture">
+            <div class="flex flex-col text-Neutral-300">
+              <cite class="nameOutput text-lg font-medium">NAMETEST</cite>
+              <div class="flex">
+                <img src="assets/images/icon-github.svg" class="size-5" alt="github icon">
+                <cite class="block text-sm text-center font-normal" id="githubOutput">GITHUBTEST</cite>
+              </div>
+            </div>
+            <!-- Não sei se "strong" é a melhor tag a ser utilizada para o código D: -->
+          </div>
+        </div>
+        <strong id="codeOutput" class="transform rotate-90 h-fit">CODETEST</strong>
+        <!-- CENTRALIZAR O CÓDIGO DEPOIS IREI FICAR MALUCO HAHAHA -->
+      </div>
+    </section>
+    <!-- Generated tickets ends -->
+  </main>
+
+  <script src="src/script.js"></script>
+  
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </footer>
+</body>
+</html>

@@ -5,6 +5,7 @@
     --color-Neutral-0: hsl(0, 0%, 100%);
     --color-Neutral-300: hsl(252, 6%, 83%);
     --color-Neutral-500: hsl(245, 15%, 58%);
+    --color-Neutral-500-transparent: rgba(139, 135, 153, 0.5);
     --color-Neutral-700: hsl(245, 19%, 35%);
     --color-Neutral-900: hsl(248, 70%, 10%);
 

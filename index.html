@@ -20,47 +20,54 @@
     * {font-family: 'Inconsolata';}
   </style>
 </head>
-<body class="bg-[url('/assets/images/background-mobile.png')] bg-cover bg-center flex flex-col items-center">
+<body class="bg-[url('/assets/images/background-mobile.png')] bg-cover bg-center flex flex-col items-center min-h-dvh">
   
   <header><img src="assets/images/logo-full.svg" alt="full logo" class="mt-5"></header>
 
   <!-- Form starts -->
 
-  <main class="flex justify-center items-center flex-col p-3">
-    <section id="page1" class="">
+  <main class="flex items-center flex-col p-3 overflow-hidden relative min-h-dvh">
+    <section id="page1" class="z-[99]">
       <div class="flex justify-center items-center flex-col">
         <h1 class="text-Neutral-0 font-extrabold text-2xl text-center mb-5 mt-7">Your Journey to Coding Conf 2025 Starts Here!</h1>
         <p class="text-Neutral-300 text-center mb-7">Secure your spot at next year's biggest coding conference.</p>
       </div>
 
       <h2 class="text-Neutral-0 text-lg">Upload Avatar</h2>
-      <div class="bg-Neutral-0-transparent backdrop:blur-2xl border w-full h-28 rounded-2xl flex flex-col items-center justify-evenly mb-1.5 cursor-pointer" onclick="inputFileTrigger()">
+      <div class="bg-Neutral-0-transparent backdrop:blur-2xl border-2 border-dashed hover:bg-Neutral-500-transparent border-Neutral-500 w-full h-28 rounded-2xl flex flex-col items-center justify-evenly mb-1.5 cursor-pointer focus:outline-2 outline-Neutral-500 outline-offset-2" onclick="inputFileTrigger()">
         <div class="bg-[url('/assets/images/icon-upload.svg')] bg-center bg-no-repeat bg-Neutral-700 size-12 rounded-lg"></div>
         <p class="text-Neutral-300">Drag and drop or click to upload</p>
       </div>
-      <small class="text-sm text-Neutral-300 font-light mb-3">Upload your photo (JPG or PNG, max size: 500KB).</small>
+      <small id="fileWarning" class="text-sm text-Neutral-300 font-light mb-3">Upload your photo (JPG or PNG, max size: 500KB).</small>
 
       <h2 class="text-Neutral-0 text-lg mb-1.5">Full Name</h2>
-      <input class="w-full p-2 rounded-lg bg-Neutral-0-transparent mb-5 backdrop:blur-2xl text-Neutral-300 font-normal border-Neutral-500 border" id="username" type="text">
+      <input class="w-full p-2 rounded-lg bg-Neutral-0-transparent mb-5 backdrop:blur-2xl text-Neutral-300 font-normal border-Neutral-500 border hover:bg-Neutral-500-transparent cursor-pointer focus:outline-2 outline-Neutral-500 outline-offset-2" id="username" type="text">
 
       <h2 class="text-Neutral-0 text-lg mb-1.5">Email Address</h2>
-      <input class="w-full p-2 rounded-lg bg-Neutral-0-transparent mb-5 backdrop:blur-2xl text-Neutral-300 font-normal border-Neutral-500 border" id="useremail" type="email" placeholder="example@email.com">
+      <input class="w-full p-2 rounded-lg bg-Neutral-0-transparent backdrop:blur-2xl text-Neutral-300 font-normal border-Neutral-500 border hover:bg-Neutral-500-transparent cursor-pointer focus:outline-2 outline-Neutral-500 outline-offset-2" id="useremail" type="email" placeholder="example@email.com">
+      <div id="emailWarning" class="hidden flex flex-row">
+        <svg class="stroke-Orange-500" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16"><path stroke-linecap="round" stroke-linejoin="round" d="M2 8a6 6 0 1 0 12 0A6 6 0 0 0 2 8Z"/><path fill="#D1D0D5" d="M8.004 10.462V7.596ZM8 5.57v-.042Z"/><path class="stroke-Orange-500" stroke-linecap="round" stroke-linejoin="round" d="M8.004 10.462V7.596M8 5.569v-.042"/></svg>
+        <small class="text-Orange-500 text-sm font-light">Please enter a valid email adress.</small>
+      </div>
 
-      <h2 class="text-Neutral-0 text-lg mb-1.5">GitHub Username</h2>
-      <input class="w-full p-2 rounded-lg bg-Neutral-0-transparent mb-5 backdrop:blur-2xl text-Neutral-300 font-normal border-Neutral-500 border" id="usergithub" type="text" placeholder="@yourusername">
+      <h2 class="text-Neutral-0 text-lg mb-1.5 mt-5">GitHub Username</h2>
+      <input class="w-full p-2 rounded-lg bg-Neutral-0-transparent mb-5 backdrop:blur-2xl text-Neutral-300 font-normal border-Neutral-500 border hover:bg-Neutral-500-transparent cursor-pointer focus:outline-2 outline-Neutral-500 outline-offset-2" id="usergithub" type="text" placeholder="@yourusername">
 
-      <button class="bg-Orange-700 rounded-lg w-full h-fit p-3 text-Neutral-900 text-lg font-bold" onclick="generateTicket()">Generate My Ticket</button>
+        <button class="bg-Orange-700 rounded-lg w-full h-fit p-3 mb-20 text-Neutral-900 text-lg font-bold z-20" onclick="generateTicket()">Generate My Ticket</button>
     </section>
     <!-- Form ends -->
 
     <input type="file" name="fileInput" accept=".png,.jpg" size="500000" class="hidden" id="inputFile">
+    <div class="bg-[url('/assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg')] bg-cover bg-no-repeat size-60 absolute top-3/4 right-36 z-10"></div>
+    <div class="bg-[url('/assets/images/pattern-lines.svg')] h-80 w-full absolute bottom-96"></div>
+    <div class="bg-[url('/assets/images/pattern-squiggly-line-top.svg')] size-28 absolute bottom-4/5 left-3/4 bg-contain bg-no-repeat"></div>
 
     <!-- Generated tickets starts -->
     <section id="page2" class="flex flex-col justify-center items-center hidden"> 
       <h1 class="text-3xl font-extrabold text-center text-Neutral-0 mt-5">Congrats, <span class="nameOutput bg-[linear-gradient(to_right,_hsl(7,_86%,_67%),_hsl(0,_0%,_100%))] bg-clip-text text-transparent">NAME TEST</span>! Your ticket is ready.</h1>
       <p class="text-neutral-300 text-lg text-center leading-5 font-normal mt-5 mb-16">We've emailed your ticket to <span id="emailOutput" class="text-Orange-500"></span> and will send updates in the run up to the event.</p>
 
-      <div class="bg-[url('/assets/images/pattern-ticket.svg')] w-full h-40 bg-center bg-contain bg-no-repeat flex justify-between p-5">
+      <div class="bg-[url('/assets/images/pattern-ticket.svg')] w-full h-40 bg-center bg-contain bg-no-repeat flex justify-between p-5 pr-0">
         <div class="flex flex-col justify-between">
           <div class="flex gap-2.5">
             <img src="assets/images/logo-mark.svg" class="size-8" alt="logo mark">
@@ -83,8 +90,7 @@
             <!-- Não sei se "strong" é a melhor tag a ser utilizada para o código D: -->
           </div>
         </div>
-        <strong id="codeOutput" class="transform rotate-90 h-fit">CODETEST</strong>
-        <!-- CENTRALIZAR O CÓDIGO DEPOIS IREI FICAR MALUCO HAHAHA -->
+        <strong id="codeOutput" class="self-center transform rotate-90 h-fit text-Neutral-500 text-xl font-medium">CODETEST</strong>
       </div>
     </section>
     <!-- Generated tickets ends -->

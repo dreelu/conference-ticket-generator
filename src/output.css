@@ -28,6 +28,7 @@
     --font-weight-medium: 500;
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
+    --radius-sm: 0.25rem;
     --radius-lg: 0.5rem;
     --radius-2xl: 1rem;
     --blur-2xl: 40px;
@@ -285,10 +286,6 @@
     width: calc(var(--spacing) * 8);
     height: calc(var(--spacing) * 8);
   }
-  .size-10 {
-    width: calc(var(--spacing) * 10);
-    height: calc(var(--spacing) * 10);
-  }
   .size-12 {
     width: calc(var(--spacing) * 12);
     height: calc(var(--spacing) * 12);
@@ -300,10 +297,6 @@
   .size-60 {
     width: calc(var(--spacing) * 60);
     height: calc(var(--spacing) * 60);
-  }
-  .size-\[16px\] {
-    width: 16px;
-    height: 16px;
   }
   .h-28 {
     height: calc(var(--spacing) * 28);
@@ -319,6 +312,18 @@
   }
   .min-h-dvh {
     min-height: 100dvh;
+  }
+  .w-1 {
+    width: calc(var(--spacing) * 1);
+  }
+  .w-1\/2 {
+    width: calc(1/2 * 100%);
+  }
+  .w-3 {
+    width: calc(var(--spacing) * 3);
+  }
+  .w-3\/5 {
+    width: calc(3/5 * 100%);
   }
   .w-full {
     width: 100%;
@@ -368,11 +373,17 @@
   .overflow-hidden {
     overflow: hidden;
   }
+  .rounded {
+    border-radius: 0.25rem;
+  }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
   }
   .rounded-lg {
     border-radius: var(--radius-lg);
+  }
+  .rounded-sm {
+    border-radius: var(--radius-sm);
   }
   .border {
     border-style: var(--tw-border-style);
@@ -389,35 +400,26 @@
   .border-Neutral-500 {
     border-color: var(--color-Neutral-500);
   }
+  .border-Neutral-700 {
+    border-color: var(--color-Neutral-700);
+  }
   .bg-Neutral-0-transparent {
     background-color: var(--color-Neutral-0-transparent);
+  }
+  .bg-Neutral-500 {
+    background-color: var(--color-Neutral-500);
   }
   .bg-Neutral-700 {
     background-color: var(--color-Neutral-700);
   }
-  .bg-Orange-500 {
-    background-color: var(--color-Orange-500);
-  }
   .bg-Orange-700 {
     background-color: var(--color-Orange-700);
-  }
-  .bg-\[\(url\)\] {
-    background-color: (url);
-  }
-  .bg-\[url\] {
-    background-color: url;
   }
   .bg-\[linear-gradient\(to_right\,_hsl\(7\,_86\%\,_67\%\)\,_hsl\(0\,_0\%\,_100\%\)\)\] {
     background-image: linear-gradient(to right, hsl(7, 86%, 67%), hsl(0, 0%, 100%));
   }
-  .bg-\[url\(\'\'\)\] {
-    background-image: url('');
-  }
   .bg-\[url\(\'\/assets\/images\/background-mobile\.png\'\)\] {
     background-image: url('/assets/images/background-mobile.png');
-  }
-  .bg-\[url\(\'\/assets\/images\/icon-info\.svg\'\)\] {
-    background-image: url('/assets/images/icon-info.svg');
   }
   .bg-\[url\(\'\/assets\/images\/icon-upload\.svg\'\)\] {
     background-image: url('/assets/images/icon-upload.svg');
@@ -434,23 +436,11 @@
   .bg-\[url\(\'\/assets\/images\/pattern-ticket\.svg\'\)\] {
     background-image: url('/assets/images/pattern-ticket.svg');
   }
-  .bg-\[url\(\'assets\/images\/icon-info\.svg\'\)\] {
-    background-image: url('assets/images/icon-info.svg');
-  }
-  .bg-\[url\(\'assets\\images\/icon-info\.svg\'\)\] {
-    background-image: url('assets\images/icon-info.svg');
-  }
-  .bg-\[url\(\'assets\\images\\icon-info\.svg\'\)\] {
-    background-image: url('assets\images\icon-info.svg');
-  }
   .bg-contain {
     background-size: contain;
   }
   .bg-cover {
     background-size: cover;
-  }
-  .bg-clip-content {
-    background-clip: content-box;
   }
   .bg-clip-text {
     background-clip: text;
@@ -461,29 +451,14 @@
   .bg-no-repeat {
     background-repeat: no-repeat;
   }
-  .fill-Orange-500 {
-    fill: var(--color-Orange-500);
-  }
-  .fill-orange-500 {
-    fill: var(--color-orange-500);
-  }
-  .fill-orange-950 {
-    fill: var(--color-orange-950);
-  }
   .stroke-Orange-500 {
     stroke: var(--color-Orange-500);
   }
-  .stroke-amber-950 {
-    stroke: var(--color-amber-950);
+  .p-0 {
+    padding: calc(var(--spacing) * 0);
   }
-  .stroke-1 {
-    stroke-width: 1;
-  }
-  .stroke-2 {
-    stroke-width: 2;
-  }
-  .stroke-3 {
-    stroke-width: 3;
+  .p-0\.5 {
+    padding: calc(var(--spacing) * 0.5);
   }
   .p-1 {
     padding: calc(var(--spacing) * 1);
@@ -575,31 +550,11 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
-  .outline-1 {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
-  }
-  .outline-4 {
-    outline-style: var(--tw-outline-style);
-    outline-width: 4px;
-  }
-  .outline-offset-1 {
-    outline-offset: 1px;
-  }
   .outline-offset-2 {
     outline-offset: 2px;
   }
-  .outline-offset-4 {
-    outline-offset: 4px;
-  }
-  .outline-offset-8 {
-    outline-offset: 8px;
-  }
   .outline-Neutral-500 {
     outline-color: var(--color-Neutral-500);
-  }
-  .outline-red-600 {
-    outline-color: var(--color-red-600);
   }
   .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
@@ -610,13 +565,6 @@
       filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
     }
   }
-  .hover\:cursor-pointer {
-    &:hover {
-      @media (hover: hover) {
-        cursor: pointer;
-      }
-    }
-  }
   .hover\:bg-Neutral-500-transparent {
     &:hover {
       @media (hover: hover) {
@@ -624,62 +572,17 @@
       }
     }
   }
-  .focus\:border {
-    &:focus {
-      border-style: var(--tw-border-style);
-      border-width: 1px;
-    }
-  }
-  .focus\:border-8 {
-    &:focus {
-      border-style: var(--tw-border-style);
-      border-width: 8px;
-    }
-  }
-  .focus\:border-Neutral-500 {
-    &:focus {
-      border-color: var(--color-Neutral-500);
-    }
-  }
-  .focus\:outline {
-    &:focus {
-      outline-style: var(--tw-outline-style);
-      outline-width: 1px;
-    }
-  }
-  .focus\:outline-0 {
-    &:focus {
-      outline-style: var(--tw-outline-style);
-      outline-width: 0px;
-    }
-  }
-  .focus\:outline-1 {
-    &:focus {
-      outline-style: var(--tw-outline-style);
-      outline-width: 1px;
+  .hover\:decoration-solid {
+    &:hover {
+      @media (hover: hover) {
+        text-decoration-style: solid;
+      }
     }
   }
   .focus\:outline-2 {
     &:focus {
       outline-style: var(--tw-outline-style);
       outline-width: 2px;
-    }
-  }
-  .focus\:outline-3 {
-    &:focus {
-      outline-style: var(--tw-outline-style);
-      outline-width: 3px;
-    }
-  }
-  .focus\:outline-4 {
-    &:focus {
-      outline-style: var(--tw-outline-style);
-      outline-width: 4px;
-    }
-  }
-  .focus\:outline-Neutral-500 {
-    &:focus {
-      outline-color: var(--color-Neutral-500);
     }
   }
 }

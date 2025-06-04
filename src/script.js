@@ -3,6 +3,13 @@ let fileInput = document.querySelector("input#inputFile")
 let imgURL = null
 
 fileInput.addEventListener("change", function(event) {
+    const iconFile = document.querySelector("div#uploadIcon")
+    const InputFileText = document.querySelector("p#inputFileText")
+    const InputFileButtons = document.querySelector("div#inputFileButtons")
+    const inputFileDiv = document.querySelector("div#inputFileDiv")
+    const InputFileButton1 = document.querySelector("button#InputFileButton1")
+    const InputFileButton2 = document.querySelector("button#InputFileButton2")
+
     const file = event.target.files[0]
     const maxSize = 500 * 1024
      if (!file) return
@@ -12,10 +19,25 @@ fileInput.addEventListener("change", function(event) {
         fileWarning.innerHTML = 'File too large. Please upload a photo under 500KB'
         fileWarning.style.color = 'hsl(7, 88%, 67%)'
         generalError = true
-
     }
-
+    
+    inputFileDiv.onclick = null
     imgURL = URL.createObjectURL(file)
+    
+    iconFile.style.backgroundImage = `url('${imgURL}')`
+    iconFile.classList.add('bg-cover', 'border-2', 'border-Neutral-500')
+    InputFileButtons.classList.remove('hidden')
+    InputFileText.classList.add('hidden')
+
+    InputFileButton1.addEventListener("click", () => {
+        inputFileDiv.onclick = 'inputFileTrigger()'
+
+        iconFile.style.backgroundImage = "url('/assets/images/icon-upload.svg')"
+        iconFile.classList.remove('bg-cover', 'border-2', 'border-Neutral-500')
+        InputFileButtons.style.display = 'none'
+        InputFileText.style.display = 'block'
+    })
+
 })
 
 function inputFileTrigger() {
@@ -30,7 +52,7 @@ function generateTicket() {
     let useremail = document.querySelector("input#useremail")
     let usergithub = document.querySelector("input#usergithub")
 
-    let nameOutput = document.querySelector("span.nameOutput")
+    let nameOutput = document.getElementsByClassName("nameOutput")
     let emailOutput = document.querySelector("span#emailOutput")
     let githubOutput = document.querySelector("cite#githubOutput")
     let imageOutput = document.querySelector("img#imageOutput")
@@ -38,13 +60,24 @@ function generateTicket() {
     let codeOutput = document.querySelector("strong#codeOutput")
     let code = ''
 
-    let userimageError = false
-    let usernameError = false
-    let useremailError = false
-    let usergithubError = false
-
-    if (fileInput.value == '') {
+    if (fileInput.value === '') {
         generalError = true
+    }
+    if (username.value === '') {
+        const nameWarning = document.querySelector("div#nameWarning")
+        nameWarning.classList.remove('hidden')
+        generalError = true
+    } else {
+        nameWarning.classList.add('hidden')
+        generalError = false
+    }
+    if (usergithub.value === '') {
+        const githubWarning = document.querySelector("div#githubWarning")
+        githubWarning.classList.remove('hidden')
+        generalError = true
+    } else {
+        githubWarning.classList.add('hidden')
+        generalError = false
     }
 
     if (useremail instanceof HTMLInputElement) {
@@ -66,12 +99,13 @@ function generateTicket() {
         code += numeral[index]
     }
 
-    nameOutput.innerHTML = username.value
+    for (let element of nameOutput) {
+        element.innerHTML = username.value
+    }
     emailOutput.innerHTML = useremail.value
     githubOutput.innerHTML = usergithub.value
     imageOutput.src = imgURL
     codeOutput.innerHTML = `#${code}`
-    //Fazer condicionais para que o código não funcione caso o email não esteja nos padrões requisitados.
 
     page1.classList.add('hidden')
     page2.classList.remove("hidden")

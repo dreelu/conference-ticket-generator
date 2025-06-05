@@ -1,14 +1,22 @@
 let generalError = false
 let fileInput = document.querySelector("input#inputFile")
+const inputFileDiv = document.querySelector("div#inputFileDiv")
 let imgURL = null
+
+function fakeHover() {
+    inputFileDiv.classList.add('bg-Neutral-500-transparent','cursor-pointer')
+}
+function removeFakeHover() {
+    inputFileDiv.classList.remove('bg-Neutral-500-transparent','cursor-pointer')
+}
+inputFileDiv.addEventListener("mouseover", fakeHover)
+inputFileDiv.addEventListener("mouseout", removeFakeHover)
+
 
 fileInput.addEventListener("change", function(event) {
     const iconFile = document.querySelector("div#uploadIcon")
     const InputFileText = document.querySelector("p#inputFileText")
     const InputFileButtons = document.querySelector("div#inputFileButtons")
-    const inputFileDiv = document.querySelector("div#inputFileDiv")
-    const InputFileButton1 = document.querySelector("button#InputFileButton1")
-    const InputFileButton2 = document.querySelector("button#InputFileButton2")
 
     const file = event.target.files[0]
     const maxSize = 500 * 1024
@@ -28,21 +36,37 @@ fileInput.addEventListener("change", function(event) {
     iconFile.classList.add('bg-cover', 'border-2', 'border-Neutral-500')
     InputFileButtons.classList.remove('hidden')
     InputFileText.classList.add('hidden')
-
-    InputFileButton1.addEventListener("click", () => {
-        inputFileDiv.onclick = 'inputFileTrigger()'
-
-        iconFile.style.backgroundImage = "url('/assets/images/icon-upload.svg')"
-        iconFile.classList.remove('bg-cover', 'border-2', 'border-Neutral-500')
-        InputFileButtons.style.display = 'none'
-        InputFileText.style.display = 'block'
-    })
-
+    inputFileDiv.removeEventListener("mouseover", fakeHover)
+    inputFileDiv.removeEventListener("mouseout", removeFakeHover)
+    removeFakeHover()
 })
+
+function removeImage() {
+  imgURL = null
+  
+
+  const iconFile = document.querySelector("div#uploadIcon")
+  const InputFileText = document.querySelector("p#inputFileText")
+  const InputFileButtons = document.querySelector("div#inputFileButtons")
+
+  iconFile.style.backgroundImage = "url('/assets/images/icon-upload.svg')"
+  iconFile.classList.remove('bg-cover', 'border-2', 'border-Neutral-500')
+  InputFileButtons.classList.add('hidden')
+  InputFileText.classList.remove('hidden')
+
+  inputFileDiv.addEventListener("mouseover", fakeHover)
+  inputFileDiv.addEventListener("mouseout", removeFakeHover)
+  inputFileDiv.onclick = inputFileTrigger
+  fakeHover()
+}
 
 function inputFileTrigger() {
     fileInput.click()
 }
+
+ document.querySelector("button#InputFilleButton1").addEventListener("click", removeImage)
+
+
 
 function generateTicket() {
     let page1 = document.querySelector("section#page1")
